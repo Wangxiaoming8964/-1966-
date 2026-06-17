@@ -1,0 +1,246 @@
+:root {
+  --paper: #efe5d0;
+  --paper-deep: #dfd0b2;
+  --ink: #202020;
+  --muted: #5c554b;
+  --red: #8d1f1b;
+  --red-dark: #611412;
+  --line: rgba(34, 28, 22, 0.22);
+  --shadow: rgba(37, 25, 16, 0.16);
+  --white: #fbf7ec;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background:
+    linear-gradient(rgba(32, 25, 18, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(32, 25, 18, 0.035) 1px, transparent 1px),
+    var(--paper);
+  background-size: 28px 28px, 28px 28px, auto;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  color: var(--ink);
+  font-family: "Noto Serif SC", "Songti SC", SimSun, "Times New Roman", serif;
+  line-height: 1.7;
+}
+
+button {
+  font: inherit;
+}
+
+.app-shell {
+  width: min(100%, 760px);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 22px 16px 34px;
+}
+
+.screen {
+  min-height: calc(100vh - 56px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+}
+
+.screen::before {
+  content: "";
+  width: 86px;
+  height: 8px;
+  background: var(--red);
+  display: block;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+}
+
+.eyebrow,
+.progress,
+.stamp {
+  color: var(--red-dark);
+  font-family: Arial, "Microsoft YaHei", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.eyebrow,
+.progress {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2rem, 13vw, 4.6rem);
+  line-height: 1.08;
+  font-weight: 900;
+}
+
+h2 {
+  font-size: clamp(1.65rem, 8vw, 3rem);
+  line-height: 1.18;
+}
+
+h3 {
+  font-size: 1.2rem;
+  line-height: 1.3;
+}
+
+.subtitle,
+.body-text,
+.intro-text,
+.feedback-text,
+.ending-description {
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.intro-text,
+.body-text,
+.ending-description {
+  white-space: pre-line;
+}
+
+.panel {
+  padding: 18px;
+  border: 1px solid var(--line);
+  background: rgba(251, 247, 236, 0.72);
+  box-shadow: 0 12px 32px var(--shadow);
+}
+
+.archive-card {
+  position: relative;
+}
+
+.archive-card::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(141, 31, 27, 0.22);
+  pointer-events: none;
+}
+
+.actions,
+.identity-list,
+.option-list {
+  display: grid;
+  gap: 12px;
+}
+
+.actions {
+  margin-top: 8px;
+}
+
+.btn {
+  width: 100%;
+  min-height: 52px;
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+  padding: 13px 16px;
+  background: var(--white);
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 rgba(32, 32, 32, 0.16);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  background: #fffaf0;
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 rgba(32, 32, 32, 0.16);
+  outline: 2px solid rgba(141, 31, 27, 0.45);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background: var(--red);
+  color: #fff8eb;
+  border-color: var(--red-dark);
+  text-align: center;
+  font-family: Arial, "Microsoft YaHei", sans-serif;
+  font-weight: 700;
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background: var(--red-dark);
+}
+
+.btn-identity {
+  display: grid;
+  gap: 4px;
+}
+
+.identity-title,
+.option-text {
+  font-weight: 700;
+}
+
+.identity-note {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 12px;
+}
+
+.question-box {
+  display: grid;
+  gap: 14px;
+}
+
+.feedback-panel {
+  border-left: 6px solid var(--red);
+}
+
+.ending-summary {
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+  color: var(--red-dark);
+  font-weight: 700;
+}
+
+.error {
+  border-left: 6px solid var(--red);
+}
+
+@media (min-width: 700px) {
+  .app-shell {
+    padding: 42px 24px 56px;
+  }
+
+  .screen {
+    min-height: calc(100vh - 98px);
+  }
+
+  .panel {
+    padding: 24px;
+  }
+
+  .identity-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .identity-list .btn:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
